@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 import React, {useState} from 'react';
+import  {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import GlobalStyle from '../Components/GlobalStyle/GlobalStyle';
 import FormStyle from '../Components/Form/FormStyle';
 import FormWrapperStyle from '../Components/FormWrapper/FormWrapperStyle';
@@ -18,7 +20,10 @@ const initialState = {
     contactNumber:""
 }
 function Register() {
-    
+
+        let history = useHistory();
+        var passwordHash = require('password-hash');
+
         const [state, setState] = useState(initialState);
         const minLength = 8;
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
@@ -30,7 +35,8 @@ function Register() {
         const [error2, setError2] = useState("");
         const [error3, setError3] = useState("");
         const [error4, setError4] = useState("");
-        const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+
+        const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
             e.preventDefault();
             console.log(state);
             const regx = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
@@ -72,12 +78,15 @@ function Register() {
             }
             if(f1 && f2 && f3 && f4)
             {
-            {setTimeout(function()
-                {
-                    alert('Your details has been registered.');
-                },
-                500);}
-                //setState({email:"", password:"", contactNumber:"" });
+                await axios.post("http://localhost:3334/users", state);
+                history.push("/");
+                {setTimeout(function()
+                    {
+                        alert('Your details has been registered.');
+                    },
+                    500);}
+
+                setState(initialState );
             }
         };
 
