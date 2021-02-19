@@ -11,6 +11,8 @@ import InputArea from '../Components/InputArea/InputArea';
 import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
 import NewUserRegistration from '../Components/RegistrationLink/NewUserRegistration';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
+import {users} from '../db.json';
+
 
 const initialState = {
     username: "",
@@ -22,8 +24,7 @@ const initialState = {
 function Register() {
 
         let history = useHistory();
-        var passwordHash = require('password-hash');
-
+        const bcrypt = require('bcryptjs');
         const [state, setState] = useState(initialState);
         const minLength = 8;
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
@@ -39,12 +40,21 @@ function Register() {
         const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
             e.preventDefault();
             console.log(state);
+
+            const dbObject = users.filter(d => d.email == state.email)
+            
             const regx = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
             var f1=0,f2=0,f3=0,f4=0;
+
+            
             if(state.email==="")
             setError1('Enter email');
             else if(regx.test(state.email) === false)
             setError1('Invalid Email');
+            else if(dbObject.length>0)
+            {
+                setError1('Email already registered')
+            }
             else
             {
             setError1('');
@@ -78,6 +88,17 @@ function Register() {
             }
             if(f1 && f2 && f3 && f4)
             {
+                const pass = bcrypt.hashSync(state.password, bcrypt.genSaltSync());
+                const conpass = bcrypt.hashSync(state.confirmPassword, bcrypt.genSaltSync());
+                state.password = pass;
+                // if(bcrypt.compareSync(state.confirmPassword, state.password))
+                // {
+                //     console.log("trueeeee");
+                    
+                // }
+                state.confirmPassword = conpass;
+                // console.log(pass,conpass);
+                
                 await axios.post("http://localhost:3334/users", state);
                 history.push("/");
                 {setTimeout(function()
@@ -94,7 +115,7 @@ function Register() {
             <>
                 <GlobalStyle/>
                 <FormWrapperStyle>
-                    <FormStyle>
+                    <FormStyle method="POST">
                     <HeadingStyle>
                         <Heading name="Registration" />
                     </HeadingStyle>
