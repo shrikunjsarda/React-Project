@@ -8,7 +8,8 @@ import Heading from '../Components/Heading/heading_Components';
 import InputArea from '../Components/InputArea/InputArea';
 import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
 import RegistrationLinkStyle from '../Components/RegistrationLink/RegistrationLink';
-import ChangePassword from './ChangePassword'
+import ChangePassword from './ChangePassword';
+import {users} from '../db.json';
 //import NewUserRegistration from '../Components/RegistrationLink/NewUserRegistration';
 
 
@@ -21,17 +22,27 @@ const initialState = {
 function EditProfile() {
     
         const [state, setState] = useState(initialState);
+        const [error1, setError1] = useState("");
+        const [error2, setError2] = useState("");
+        const bcrypt = require('bcryptjs');
+
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
             const inputUsername = e.currentTarget.name;
             const value = e.currentTarget.value;
 
             setState(prev=>({...prev, [inputUsername] : value}));
         };
+
+        const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault(); 
+            const dbObject = users.filter(d => d.email === state.Email); // state.email value with email which comes from routing
+            // write update logic here
+        }
         return(
             <>
                 <GlobalStyle/>
                 <FormWrapperStyle>
-                    <FormStyle>
+                    <FormStyle onSubmit ={handleSubmit} method="POST">
                     <HeadingStyle>
                         <Heading name="Edit Profile" />
                     </HeadingStyle>
@@ -43,15 +54,7 @@ function EditProfile() {
                         value={state.Name}
                         onChange={handleInput}
                     />
-                    <label>Email:</label>
-                    <InputArea
-                        type="email"
-                        name="email"
-                        autoComplete="off"
-                        value={state.Email}
-                        onChange={handleInput}
-                    />
-                    <label>Contact:</label>
+                    <label>Contact Number:</label>
                     <InputArea
                         type="tel"
                         name="contact"

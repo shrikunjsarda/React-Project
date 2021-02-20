@@ -31,11 +31,7 @@ function Login() {
 
             setState(prev=>({...prev, [inputUsername] : value}));
         };
-
-
-        
-        
-        
+ 
         const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             
             e.preventDefault();
@@ -54,6 +50,7 @@ function Login() {
                 {
                     console.log(dbObject);
                     console.log(state.password);
+                    console.log(dbObject[0].username);
                     if(bcrypt.compareSync(dbObject[0].password, state.password))
                     {
                         console.log("true");
