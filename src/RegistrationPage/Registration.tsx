@@ -37,7 +37,7 @@ function Register() {
         const [error3, setError3] = useState("");
         const [error4, setError4] = useState("");
 
-        const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+        const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
             e.preventDefault();
             console.log(state);
 
@@ -115,7 +115,7 @@ function Register() {
             <>
                 <GlobalStyle/>
                 <FormWrapperStyle>
-                    <FormStyle method="POST">
+                    <FormStyle onSubmit = {handleSubmit} method="POST">
                     <HeadingStyle>
                         <Heading name="Registration" />
                     </HeadingStyle>
@@ -189,7 +189,7 @@ function Register() {
                         </ErrorStyle>
                     )}
                     <NewUserRegistration name="Already Registered?" linkText="Login!"/>
-                    <RegisterButtonStyle type="submit" onClick = {handleSubmit} > Register </RegisterButtonStyle>
+                    <RegisterButtonStyle type="submit"  > Register </RegisterButtonStyle>
                     </FormStyle>
                 </FormWrapperStyle>
             </>
