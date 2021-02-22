@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import RegistrationLinkStyle from './RegistrationLink';
+import RegistrationLinkStyle from './LinkStyle';
 import axios from 'axios';
 import {useHistory} from 'react-router-dom';
 

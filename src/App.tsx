@@ -6,6 +6,9 @@ import Register from './RegistrationPage/Registration';
 import Profile from './UserProfile/Profile';
 import ChangePassword from './UserProfile/ChangePassword';
 import EditProfile from './UserProfile/EditProfile';
+import Dashboard from './Dashboard/Dashboard';
+import RegisterButtonStyle from './Components/ButtonRegister/RegisterButtonStyle';
+import GlobalStyle from './Components/GlobalStyle/GlobalStyle';
 
 
 
@@ -18,6 +21,7 @@ function App() {
         {/* <Register /> */}
         
         <Route exact path="/" component={Login} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route path="/register" component={Register} />
         <Route path="/profile" component={Profile} />
         <Route path="/edit_profile/" component={EditProfile} />

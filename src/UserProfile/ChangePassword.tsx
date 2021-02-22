@@ -7,7 +7,7 @@ import HeadingStyle from '../Components/Heading/HeadingStyle';
 import Heading from '../Components/Heading/heading_Components';
 import InputArea from '../Components/InputArea/InputArea';
 import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
-import RegistrationLinkStyle from '../Components/RegistrationLink/RegistrationLink';
+import RegistrationLinkStyle from '../Components/RegistrationLink/LinkStyle';
 import NewUserRegistration from '../Components/RegistrationLink/NewUserRegistration';
 import {users} from '../db.json';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';

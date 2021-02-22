@@ -67,7 +67,7 @@ function Login() {
                         console.log("true");
                         // User with correct credentials
                         history.push({
-                            pathname: '/profile',
+                            pathname: '/dashboard',
                             state: state.email
                         });
                     }

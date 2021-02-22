@@ -8,7 +8,7 @@ import Heading from '../Components/Heading/heading_Components';
 import InputArea from '../Components/InputArea/InputArea';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
 import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
-import RegistrationLinkStyle from '../Components/RegistrationLink/RegistrationLink';
+import RegistrationLinkStyle from '../Components/RegistrationLink/LinkStyle';
 import ChangePassword from './ChangePassword';
 import {users} from '../db.json';
 import axios from 'axios';
@@ -46,6 +46,7 @@ function EditProfile() {
             const value = e.currentTarget.value;
             
             setState(prev=>({...prev, [inputUsername] : value}));
+
         };
 
         

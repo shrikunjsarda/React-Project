@@ -1,18 +1,20 @@
-// import React from 'react';
 import styled from 'styled-components';
 
-const RegisterButtonStyle = styled.button`
+const AddButton = styled.button`
   display: block;
-  background-color: #0089fe;
+  background-color:  #0089fe;
   color: #fff;
   font-size: .9rem;
   border-radius: 5px;
-  margin: auto;
+  margin-left:2%;
+  margin-right: 2%;
+  margin-top: 1%;
   height: 40px;
+  width: 11rem;
   border: none;
   padding: 0px 20px;
   cursor: pointer;
   box-sizing: border-border-box;
 `;
 
-export default RegisterButtonStyle;
+export default AddButton;

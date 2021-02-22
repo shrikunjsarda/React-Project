@@ -2,13 +2,26 @@
   "users": [
     {
       "id": 1,
-      "username": "as",
+      "username": "asd",
       "email": "as@gmail.com",
       "password": "asdfghjkl",
       "confirmPassword": "asdfghjkl",
       "contactNumber": "1234567221",
-      "properties": [{"name":"sdf", "price":"sd"}]
-      
+      "properties": [{
+          "Name": "chintan",
+          "Address": "sdfghjhgfdsdfghjhdsdfgnmfdsdfghnhgfdsdfghgfdsdfghgfdsdfghgfdsdfghgfdsdfbngfdsdfghgfdsdfghgfsadfghngfsdfgnfd",
+          "Price": 2
+        },
+        {
+          "Name": "sadfghfdsadfghchintan",
+          "Address": "hello",
+          "Price": 2
+        },
+        {
+          "Name": "csdfghjgfdhintan",
+          "Address": "hello",
+          "Price": 2
+        }]
     }
   ]
 }

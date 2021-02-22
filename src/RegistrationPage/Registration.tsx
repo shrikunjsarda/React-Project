@@ -9,7 +9,7 @@ import HeadingStyle from '../Components/Heading/HeadingStyle';
 import Heading from '../Components/Heading/heading_Components';
 import InputArea from '../Components/InputArea/InputArea';
 import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
-import NewUserRegistration from '../Components/RegistrationLink/NewUserRegistration';
+import LoginFormLink from '../Components/LoginLink/LoginLink';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
 import {users} from '../db.json';
 
@@ -192,7 +192,7 @@ function Register() {
                         <p>**{error4}</p>
                         </ErrorStyle>
                     )}
-                    <NewUserRegistration name="Already Registered?" linkText="Login!"/>
+                    <LoginFormLink name="Already Registered?" linkText="Login!"/>
                     <RegisterButtonStyle type="submit"  > Register </RegisterButtonStyle>
                     </FormStyle>
                 </FormWrapperStyle>
