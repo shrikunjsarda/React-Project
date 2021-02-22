@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Components/ButtonRegister/Button';
 import DeleteButton from '../Components/ButtonRegister/DeleteButton';
 import DivflexButton from '../Components/DivFlex/DivflexButton';
@@ -8,6 +8,17 @@ import Td from '../Components/TableStyle/Td';
 import Th from '../Components/TableStyle/Th';
 import Thead from '../Components/TableStyle/Thead';
 import Tr from '../Components/TableStyle/Tr';
+import 'react-responsive-modal/styles.css';
+import { Modal } from "react-responsive-modal";
+import HeadingStyle from '../Components/Heading/HeadingStyle';
+import InputArea from '../Components/InputArea/InputArea';
+import Heading from '../Components/Heading/heading_Components';
+import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
+import { rgbToHex } from '@material-ui/core';
+
+
+
+
  type listType ={
      Name: string,
      Address: string,
@@ -17,13 +28,22 @@ import Tr from '../Components/TableStyle/Tr';
      list: listType[]
  }
 const Table:React.FC<proptype> = (props) =>{
+
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
+
     const handleDelete = () =>{
+        
+    }
+
+    const handleSave = () =>{
 
     }
 
-    const handleEdit = () =>{
+    
 
-    }
     return (
         <>
             <TableStyle>
@@ -46,7 +66,40 @@ const Table:React.FC<proptype> = (props) =>{
                                 <Td colSpan={1}>{Property.Price}</Td>
                                 <Td colSpan={1}>
                                     <DivflexButton>
-                                        <Button onClick= {handleEdit}>Edit</Button>
+                                        <Button onClick= {onOpenModal}>Edit</Button>
+                                        <Modal styles={{ overlay: { background: "#02020225" } }} open={open} onClose={onCloseModal} center>
+                
+                                            <div style={{width: "500px"}}>
+                                            <HeadingStyle>
+                                                <Heading name="Edit Property" />
+                                            </HeadingStyle>
+                                            <label>Name:</label>
+                                            <InputArea
+                                                type="text"
+                                                name="propertyname"
+                                                autoComplete="off"
+                                                required
+                                            />
+                                            
+                                            <label>Address:</label>
+                                            <InputArea
+                                                type="text"
+                                                name="propertyaddress"
+                                                autoComplete="off"
+                                                required
+                                            />
+                                            <label>Price:</label>
+                                            <InputArea
+                                                type="number"
+                                                name="propertyprice"
+                                                autoComplete="off"
+                                                required
+                                            />
+                                            
+                                            <RegisterButtonStyle type="submit" onClick={handleSave}> Save </RegisterButtonStyle>
+                                            </div>
+                                        
+                                        </Modal>
                                         <DeleteButton onClick = {handleDelete}>Delete</DeleteButton>
                                     </DivflexButton>
                                         
