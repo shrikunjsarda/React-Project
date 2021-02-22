@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "asf",
+      "email": "a@gmail.com",
+      "password": "asjhdsja",
+      "confirmPassword": "asjhdsja",
+      "contactNumber": "1234567890"
+    },
+    {
+      "username": "123",
+      "email": "ac@gmail.com",
+      "password": "$2a$10$GSkPhiI/JgJiNMGhRE/W8Od5pKh.CCBqsepaDUsMk/EgjCKwzKQby",
+      "confirmPassword": "$2a$10$gck6XVduoHXrERCASYWHM.MLWvpdjSMbD.yVZ.z5f6DwkLSZJD7dy",
+      "contactNumber": "1234567890",
+      "id": 2
+    }
+  ]
+}

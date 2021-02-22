@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 import React, {useState} from 'react';
+import  {useHistory} from 'react-router-dom';
+import axios from 'axios';
 import GlobalStyle from '../Components/GlobalStyle/GlobalStyle';
 import FormStyle from '../Components/Form/FormStyle';
 import FormWrapperStyle from '../Components/FormWrapper/FormWrapperStyle';
@@ -9,6 +11,8 @@ import InputArea from '../Components/InputArea/InputArea';
 import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
 import NewUserRegistration from '../Components/RegistrationLink/NewUserRegistration';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
+import {users} from '../db.json';
+
 
 const initialState = {
     username: "",
@@ -18,7 +22,9 @@ const initialState = {
     contactNumber:""
 }
 function Register() {
-    
+
+        let history = useHistory();
+        const bcrypt = require('bcryptjs');
         const [state, setState] = useState(initialState);
         const minLength = 8;
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
@@ -30,15 +36,25 @@ function Register() {
         const [error2, setError2] = useState("");
         const [error3, setError3] = useState("");
         const [error4, setError4] = useState("");
-        const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+
+        const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
             e.preventDefault();
             console.log(state);
+
+            const dbObject = users.filter(d => d.email == state.email)
+            
             const regx = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
             var f1=0,f2=0,f3=0,f4=0;
+
+            
             if(state.email==="")
             setError1('Enter email');
             else if(regx.test(state.email) === false)
             setError1('Invalid Email');
+            else if(dbObject.length>0)
+            {
+                setError1('Email already registered')
+            }
             else
             {
             setError1('');
@@ -72,12 +88,26 @@ function Register() {
             }
             if(f1 && f2 && f3 && f4)
             {
-            {setTimeout(function()
-                {
-                    alert('Your details has been registered.');
-                },
-                500);}
-                //setState({email:"", password:"", contactNumber:"" });
+                const pass = bcrypt.hashSync(state.password, bcrypt.genSaltSync());
+                const conpass = bcrypt.hashSync(state.confirmPassword, bcrypt.genSaltSync());
+                state.password = pass;
+                // if(bcrypt.compareSync(state.confirmPassword, state.password))
+                // {
+                //     console.log("trueeeee");
+                    
+                // }
+                state.confirmPassword = conpass;
+                // console.log(pass,conpass);
+                
+                await axios.post("http://localhost:3334/users", state);
+                history.push("/");
+                {setTimeout(function()
+                    {
+                        alert('Your details has been registered.');
+                    },
+                    500);}
+
+                setState(initialState );
             }
         };
 
@@ -85,7 +115,7 @@ function Register() {
             <>
                 <GlobalStyle/>
                 <FormWrapperStyle>
-                    <FormStyle>
+                    <FormStyle onSubmit = {handleSubmit} method="POST">
                     <HeadingStyle>
                         <Heading name="Registration" />
                     </HeadingStyle>
@@ -159,7 +189,7 @@ function Register() {
                         </ErrorStyle>
                     )}
                     <NewUserRegistration name="Already Registered?" linkText="Login!"/>
-                    <RegisterButtonStyle type="submit" onClick = {handleSubmit} > Register </RegisterButtonStyle>
+                    <RegisterButtonStyle type="submit"  > Register </RegisterButtonStyle>
                     </FormStyle>
                 </FormWrapperStyle>
             </>
