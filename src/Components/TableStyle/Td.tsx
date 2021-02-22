@@ -8,6 +8,8 @@ font-size:1.5rem;
 box-sizing: border-box;
 border-bottom: 1px solid #808080;
 word-wrap: break-word;
-padding: 1%;`
+padding: 1%;
+text-align: center;
+`
 
 export default Td;

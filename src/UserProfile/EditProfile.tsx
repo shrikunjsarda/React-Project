@@ -54,6 +54,15 @@ function EditProfile() {
                         value={state.Name}
                         onChange={handleInput}
                     />
+                    <label>Email:</label>
+                    <InputArea
+                        type="email"
+                        name="email"
+                        autoComplete="off"
+                        placeholder={state.Email}
+                        onChange={handleInput}
+                        readOnly
+                    />
                     <label>Contact Number:</label>
                     <InputArea
                         type="tel"
