@@ -25,6 +25,7 @@ function Register() {
 
         let history = useHistory();
         const bcrypt = require('bcryptjs');
+        var salt = bcrypt.genSaltSync(10);
         const [state, setState] = useState(initialState);
         const minLength = 8;
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
@@ -39,7 +40,7 @@ function Register() {
 
         const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
             e.preventDefault();
-            console.log(state);
+            //console.log(state);
 
             const dbObject = users.filter(d => d.email == state.email)
             
@@ -88,15 +89,18 @@ function Register() {
             }
             if(f1 && f2 && f3 && f4)
             {
-                const pass = bcrypt.hashSync(state.password, bcrypt.genSaltSync());
-                const conpass = bcrypt.hashSync(state.confirmPassword, bcrypt.genSaltSync());
-                state.password = pass;
-                // if(bcrypt.compareSync(state.confirmPassword, state.password))
-                // {
-                //     console.log("trueeeee");
-                    
-                // }
-                state.confirmPassword = conpass;
+                
+
+                // For hash password
+                
+                // var pass = bcrypt.hashSync(state.password, salt);
+                // console.log(pass);
+                // var conf_pass = bcrypt.hashSync(state.confirmPassword, salt);
+                // console.log(conf_pass);
+                // state.password = pass;
+                // state.confirmPassword = conf_pass;
+                // console.log(state);
+                // state.confirmPassword = conpass;
                 // console.log(pass,conpass);
                 
                 await axios.post("http://localhost:3334/users", state);

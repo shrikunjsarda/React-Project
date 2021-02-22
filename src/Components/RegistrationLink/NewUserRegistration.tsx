@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import RegistrationLinkStyle from './RegistrationLink';
-
+import axios from 'axios';
+import {useHistory} from 'react-router-dom';
 
 interface Props {
     name: string;
@@ -8,13 +9,20 @@ interface Props {
 }
 
 
-class NewUserRegistration extends React.Component<Props> {
-    render() {
+
+function NewUserRegistration(props:Props){
+    const history = useHistory();
+    const openRegistrationForm =()=>
+    {
+        
+        history.push('/register');
+    }
+    
         return (
-            <p> {this.props.name} <RegistrationLinkStyle> {this.props.linkText}</RegistrationLinkStyle></p>
+            <p> {props.name} <RegistrationLinkStyle onClick={openRegistrationForm}> {props.linkText} </RegistrationLinkStyle></p>
             
         );
-    }
+   
 }
 
 export default NewUserRegistration;

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import GlobalStyle from '../Components/GlobalStyle/GlobalStyle';
 import FormStyle from '../Components/Form/FormStyle';
 import FormWrapperStyle from '../Components/FormWrapper/FormWrapperStyle';
@@ -11,44 +11,75 @@ import RegistrationLinkStyle from '../Components/RegistrationLink/RegistrationLi
 import NewUserRegistration from '../Components/RegistrationLink/NewUserRegistration';
 import {users} from '../db.json';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
+import { useLocation, useHistory} from 'react-router';
+import axios from 'axios';
 
-const initialState = {
-    email: "ac@gmail.com",
+const initialCurrState = {
+    email: "",
     currentpassword: "",
     newpassword: "",
     confirmnewpassword: "",
 }
 
+const initialState = {
+    username: "",
+    email:"",
+    password: "",
+    confirmPassword:"",
+    contactNumber:""
+}
+
+
 function ChangePassword() {
     
+        const [currState, setCurrState] = useState(initialCurrState);
         const [state, setState] = useState(initialState);
         const [error1, setError1] = useState("");
         const [error2, setError2] = useState("");
         const bcrypt = require('bcryptjs');
+        const location = useLocation();
+        const history = useHistory();
+        const userEmail = location.state;
+        const minLength = 8;
+        
 
+        const dbObject = users.filter(d => d.email === userEmail); // state.email value with email which comes from routing
+        
 
+        const id=dbObject[0].id;
+        useEffect(() => {
+            loadUser()
+        }, [])
+        const loadUser = async () => {
+            if(dbObject.length>0)
+            setState(dbObject[0]);
+        }
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
             const inputUsername = e.currentTarget.name;
             const value = e.currentTarget.value;
 
-            setState(prev=>({...prev, [inputUsername] : value}));
+            setCurrState(prev=>({...prev, [inputUsername] : value}));
         };
 
         const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             e.preventDefault(); 
-            const dbObject = users.filter(d => d.email === state.email); // state.email value with email which comes from routing
             
-            if(!bcrypt.compareSync(dbObject[0].password, state.currentpassword))
+            
+            if(dbObject[0].password != currState.currentpassword)
             {
                 setError1("Incorrect Password"); 
             }
-            else if(state.newpassword != state.confirmnewpassword)
+            else if(currState.newpassword != currState.confirmnewpassword)
             {
                 setError2("New Password and Confirm password is different")
             }
             else
             {
-                // write update user password logic here
+                state.password = currState.newpassword;
+                state.confirmPassword = currState.confirmnewpassword;
+                
+                await axios.put(`http://localhost:3334/users/${id}`, state);
+                history.push('/');
             }
 
         }
@@ -66,7 +97,7 @@ function ChangePassword() {
                         type="password"
                         name="currentpassword"
                         autoComplete="off"
-                        value={state.currentpassword}
+                        value={currState.currentpassword}
                         onChange={handleInput}
                         required
                     />
@@ -80,7 +111,8 @@ function ChangePassword() {
                         type="password"
                         name="newpassword"
                         autoComplete="off"
-                        value={state.newpassword}
+                        value={currState.newpassword}
+                        minLength={minLength}
                         onChange={handleInput}
                         required
                     />
@@ -89,7 +121,8 @@ function ChangePassword() {
                         type="password"
                         name="confirmnewpassword"
                         autoComplete="off"
-                        value={state.confirmnewpassword}
+                        value={currState.confirmnewpassword}
+                        minLength={minLength}
                         onChange={handleInput}
                         required
                     />

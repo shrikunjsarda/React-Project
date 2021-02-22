@@ -12,13 +12,19 @@ import EditProfile from './UserProfile/EditProfile';
 function App() {
   return (
     <> 
-
-      <Router>
+      {/* <Login/> */}
+      <Switch>
         {/* /<Profile /> */}
         {/* <Register /> */}
         
-        <EditProfile/>
-      </Router>
+        <Route exact path="/" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/edit_profile/" component={EditProfile} />
+        <Route path="/password_change/" component={ChangePassword} />
+        {/* <Login/> */}
+        {/* <ChangePassword/> */}
+      </Switch>
 
     </>
   );

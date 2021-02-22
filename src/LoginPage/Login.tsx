@@ -10,6 +10,9 @@ import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyl
 import NewUserRegistration from '../Components/RegistrationLink/NewUserRegistration';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
 import {users} from '../db.json';
+import Profile from '../UserProfile/Profile';
+import {BrowserRouter} from 'react-router-dom';
+import {useHistory} from 'react-router';
 
 const initialState = {
     email: "",
@@ -24,6 +27,9 @@ function Login() {
         const [error2, setError2] = useState("");
 
         const bcrypt = require('bcryptjs');
+        var salt = bcrypt.genSaltSync(10);
+        let history = useHistory();
+        
 
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
             const inputUsername = e.currentTarget.name;
@@ -46,15 +52,24 @@ function Login() {
             else
             {
                 const dbObject = users.filter(d => d.email === state.email);
+                
                 if(dbObject.length>0)
                 {
                     console.log(dbObject);
                     console.log(state.password);
                     console.log(dbObject[0].username);
-                    if(bcrypt.compareSync(dbObject[0].password, state.password))
+                    // var currpass = bcrypt.hashSync(state.password, salt);
+                    // console.log(currpass);
+                    console.log("ppp");
+                    console.log(dbObject[0].password);
+                    if(dbObject[0].password=== state.password)
                     {
                         console.log("true");
                         // User with correct credentials
+                        history.push({
+                            pathname: '/profile',
+                            state: state.email
+                        });
                     }
                     else
                     {
@@ -67,6 +82,8 @@ function Login() {
                 }
             }
             
+            
+
             
             
         };
@@ -106,7 +123,7 @@ function Login() {
                         <p>**{error2}</p>
                         </ErrorStyle>
                     )}
-                    <NewUserRegistration name="Not a user?" linkText="Register now!"/>
+                    <NewUserRegistration name="Not a user?" linkText="Register now!" />
                     
                        
                     <RegisterButtonStyle type="submit"> Login </RegisterButtonStyle>
