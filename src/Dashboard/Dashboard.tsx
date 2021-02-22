@@ -77,6 +77,9 @@ const Dashboard: React.FC = () => {
 
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+        console.log(propertyState);
+        console.log("@@@@");
+        console.log(user);
         await axios.post(`http://localhost:3334/users/${idd}/properties/`, propertyState);
         history.push("/dashboard");
     }
@@ -142,6 +145,7 @@ const Dashboard: React.FC = () => {
                         name="Address"
                         autoComplete="off"
                         required
+                        onChange={handleInput}
                     />
                     <label>Price:</label>
                     <InputArea
@@ -149,6 +153,7 @@ const Dashboard: React.FC = () => {
                         name="Price"
                         autoComplete="off"
                         required
+                        onChange={handleInput}
                     />
                     
                     <RegisterButtonStyle type="submit" onClick={handleSubmit}> Submit </RegisterButtonStyle>

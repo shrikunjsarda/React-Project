@@ -39,7 +39,7 @@
       "password": "qwertyuiop",
       "confirmPassword": "qwertyuiop",
       "contactNumber": "1234567890",
-      "properties": [],
+      "properties": null,
       "id": 3
     }
   ]

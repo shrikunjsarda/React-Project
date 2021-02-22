@@ -25,7 +25,7 @@ import { rgbToHex } from '@material-ui/core';
      Price: number
  }
  type proptype ={
-     list: listType[]
+     list?: listType[] | null
  }
 const Table:React.FC<proptype> = (props) =>{
 
@@ -57,7 +57,7 @@ const Table:React.FC<proptype> = (props) =>{
                 </Thead>
                 <Tbody>
                     {
-                        props.list.map( Property =>(
+                        props.list && props.list.map( Property =>(
                             
                             <Tr>
                                 

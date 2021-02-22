@@ -26,7 +26,7 @@ const initialState = {
     password: "",
     confirmPassword:"",
     contactNumber:"",
-    properties<propertyType> : []
+    properties : []
 }
 function Register() {
 
