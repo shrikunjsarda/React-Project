@@ -29,8 +29,8 @@ function EditProfile() {
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{
             const inputUsername = e.currentTarget.name;
             const value = e.currentTarget.value;
-
-            setState(prev=>({...prev, [inputUsername] : value}));
+            
+            setState(prev=>({...prev,  [inputUsername]: value}));
         };
 
         const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -49,7 +49,7 @@ function EditProfile() {
                     <label>Name:</label>
                     <InputArea
                         type="text"
-                        name="name"
+                        name="Name"
                         autoComplete="off"
                         value={state.Name}
                         onChange={handleInput}
@@ -57,7 +57,7 @@ function EditProfile() {
                     <label>Contact Number:</label>
                     <InputArea
                         type="tel"
-                        name="contact"
+                        name="Contact"
                         autoComplete="off"
                         value={state.Contact}
                         onChange={handleInput}
