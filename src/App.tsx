@@ -20,7 +20,6 @@ function App() {
         {/* /<Profile /> */}
         {/* <Register /> */}
     
-        
         <Dashboard/>
       </Router>
 

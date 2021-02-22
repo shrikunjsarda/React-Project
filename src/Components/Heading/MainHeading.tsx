@@ -1,4 +1,6 @@
 import React from 'react';
+
+import {H1} from './HeadingStyle';
 interface Props {
     name: string;
 }

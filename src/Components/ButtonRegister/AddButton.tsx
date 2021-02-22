@@ -7,9 +7,10 @@ const AddButton = styled.button`
   font-size: .9rem;
   border-radius: 5px;
   margin-left:2%;
+  margin-right: 2%;
   margin-top: 1%;
   height: 40px;
-  width: 8rem;
+  width: 11rem;
   border: none;
   padding: 0px 20px;
   cursor: pointer;

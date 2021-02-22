@@ -9,6 +9,11 @@ import MainHeading from '../Components/Heading/MainHeading';
 import Table from './Table';
 import DivflexSubHeading from '../Components/DivFlex/DivflexSubHeading';
 import AddButton from '../Components/ButtonRegister/AddButton';
+import Div from '../Components/DivFlex/Div';
+import { AccountCircle } from '@material-ui/icons';
+import Span from '../Components/DivFlex/Span';
+
+
 
 const Dashboard: React.FC = () => {
 
@@ -19,13 +24,21 @@ const Dashboard: React.FC = () => {
     const handleLogout = () =>{
 
     }
+
+    const handleuserprofile = () =>{
+
+    }
     
     return (
         <>
             
             <DivflexMainHeading>
                 <MainHeading  name="Dashboard"/>
-                <Button onClick = {handleLogout} >Logout</Button>
+                <Div>
+                    
+                    <AddButton onClick = {handleuserprofile} > <Div><AccountCircle/><Span>User Profile</Span></Div></AddButton>
+                    <Button onClick = {handleLogout} >Logout</Button>
+                </Div>
             </DivflexMainHeading>
             <DivflexSubHeading>
                 <Heading  name="View Properties"/>
