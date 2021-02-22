@@ -2,12 +2,13 @@
   "users": [
     {
       "id": 1,
-      "username": "asd",
+      "username": "as",
       "email": "as@gmail.com",
       "password": "asdfghjkl",
       "confirmPassword": "asdfghjkl",
-      "contactNumber": "1234567221",
-      "properties": [{
+      "contactNumber": "1234567123",
+      "properties": [
+        {
           "Name": "chintan",
           "Address": "sdfghjhgfdsdfghjhdsdfgnmfdsdfghnhgfdsdfghgfdsdfghgfdsdfghgfdsdfghgfdsdfbngfdsdfghgfdsdfghgfsadfghngfsdfgnfd",
           "Price": 2
@@ -21,7 +22,25 @@
           "Name": "csdfghjgfdhintan",
           "Address": "hello",
           "Price": 2
-        }]
+        }
+      ]
+    },
+    {
+      "username": "qw",
+      "email": "qw@gmail.com",
+      "password": "qwertyuiop",
+      "confirmPassword": "qwertyuiop",
+      "contactNumber": "0987654321",
+      "id": 2
+    },
+    {
+      "username": "zx",
+      "email": "zx@gmail.com",
+      "password": "qwertyuiop",
+      "confirmPassword": "qwertyuiop",
+      "contactNumber": "1234567890",
+      "properties": [],
+      "id": 3
     }
   ]
 }

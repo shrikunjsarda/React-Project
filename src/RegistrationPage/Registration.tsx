@@ -13,13 +13,20 @@ import LoginFormLink from '../Components/LoginLink/LoginLink';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
 import {users} from '../db.json';
 
+type propertyType = {
+    Name:string,
+    Address:string,
+    Price:number
+}
+
 
 const initialState = {
     username: "",
     email:"",
     password: "",
     confirmPassword:"",
-    contactNumber:""
+    contactNumber:"",
+    properties<propertyType> : []
 }
 function Register() {
 

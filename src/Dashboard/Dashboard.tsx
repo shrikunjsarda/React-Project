@@ -14,6 +14,16 @@ import Div from '../Components/DivFlex/Div';
 import Span from '../Components/DivFlex/Span';
 import { useHistory, useLocation } from 'react-router';
 import {users} from '../db.json';
+import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
+
+import HeadingStyle from '../Components/Heading/HeadingStyle';
+import InputArea from '../Components/InputArea/InputArea';
+import axios from 'axios';
+
+
+
+
 
 const initialState = {
     username: "",
@@ -21,6 +31,14 @@ const initialState = {
     password: "",
     confirmPassword:"",
     contactNumber:""
+    // properties:[]
+}
+
+const initialPropertyState = {
+    Name:"",
+    Address:"",
+    Price:""
+
 }
 
 const Dashboard: React.FC = () => {
@@ -28,7 +46,10 @@ const Dashboard: React.FC = () => {
     const location = useLocation();
     const userEmail = location.state;
 
+
     const [user, setUser] = useState(initialState);
+    const [propertyState, setPropertyState] = useState(initialPropertyState);
+
 
     const dbObject = users.filter(d => d.email === userEmail);
 
@@ -42,6 +63,25 @@ const Dashboard: React.FC = () => {
     }
 
     // Logout Button
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
+
+    const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+        const inputUsername = e.currentTarget.name;
+        const value = e.currentTarget.value;
+            
+        setPropertyState(prev=>({...prev, [inputUsername] : value}));
+    };
+
+
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+        await axios.post(`http://localhost:3334/users/${idd}/properties/`, propertyState);
+        history.push("/dashboard");
+    }
+
+
     const handleLogout = () =>{
         history.push('/');
     }
@@ -54,7 +94,7 @@ const Dashboard: React.FC = () => {
         setUser(dbObject[0]);
     }
     // User Profile Button
-    const handleuserprofile = () =>{
+    const handleUserProfile = () =>{
         console.log(dbObject[0]);
         setUser(dbObject[0]);
         // console.log("hii")
@@ -64,6 +104,7 @@ const Dashboard: React.FC = () => {
             state: user.email
         });
     }
+
     
     
     return (
@@ -73,13 +114,47 @@ const Dashboard: React.FC = () => {
                 <MainHeading  name="Dashboard"/>
                 <Div>
                     
-                    <AddButton onClick = {handleuserprofile} > User Profile</AddButton>
+                    <AddButton onClick = {handleUserProfile} > User Profile</AddButton>
                     <Button onClick = {handleLogout} >Logout</Button>
                 </Div>
             </DivflexMainHeading>
             <DivflexSubHeading>
                 <Heading  name="View Properties"/>
-                <AddButton onClick = {handleAdd}>Add Property</AddButton>
+                <AddButton onClick = {onOpenModal}>Add Property</AddButton>
+                <Modal styles={{ overlay: { background: "#02020250" } }} open={open} onClose={onCloseModal} center>
+                
+                    <div style={{width: "500px"}}>
+                    <HeadingStyle>
+                        <Heading name="Add Property" />
+                    </HeadingStyle>
+                    <label>Name:</label>
+                    <InputArea
+                        type="text"
+                        name="Name"
+                        autoComplete="off"
+                        required
+                        onChange={handleInput}
+                    />
+                    
+                    <label>Address:</label>
+                    <InputArea
+                        type="text"
+                        name="Address"
+                        autoComplete="off"
+                        required
+                    />
+                    <label>Price:</label>
+                    <InputArea
+                        type="number"
+                        name="Price"
+                        autoComplete="off"
+                        required
+                    />
+                    
+                    <RegisterButtonStyle type="submit" onClick={handleSubmit}> Submit </RegisterButtonStyle>
+                    </div>
+                
+                </Modal>
             </DivflexSubHeading>
             
             <Table list={users[index].properties} />

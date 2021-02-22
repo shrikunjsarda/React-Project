@@ -23,6 +23,7 @@ const initialState = {
     password: "",
     confirmPassword:"",
     contactNumber:""
+    
 }
 
 function EditProfile() {
@@ -99,6 +100,15 @@ function EditProfile() {
                         autoComplete="off"
                         value={state.username}
                         onChange={handleInput}
+                    />
+                    <label>Email:</label>
+                    <InputArea
+                        type="email"
+                        name="email"
+                        autoComplete="off"
+                        placeholder={state.email}
+                        onChange={handleInput}
+                        readOnly
                     />
                     <label>Contact Number:</label>
                     <InputArea
