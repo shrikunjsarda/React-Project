@@ -6,41 +6,45 @@
       "email": "as@gmail.com",
       "password": "asdfghjkl",
       "confirmPassword": "asdfghjkl",
-      "contactNumber": "1234567123",
-      "properties": [
-        {
-          "Name": "chintan",
-          "Address": "sdfghjhgfdsdfghjhdsdfgnmfdsdfghnhgfdsdfghgfdsdfghgfdsdfghgfdsdfghgfdsdfbngfdsdfghgfdsdfghgfsadfghngfsdfgnfd",
-          "Price": 2
-        },
-        {
-          "Name": "sadfghfdsadfghchintan",
-          "Address": "hello",
-          "Price": 2
-        },
-        {
-          "Name": "csdfghjgfdhintan",
-          "Address": "hello",
-          "Price": 2
-        }
-      ]
+      "contactNumber": "1234567123"
     },
     {
-      "username": "qw",
-      "email": "qw@gmail.com",
-      "password": "qwertyuiop",
-      "confirmPassword": "qwertyuiop",
-      "contactNumber": "0987654321",
+      "username": "vvvv",
+      "email": "zx@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "contactNumber": "0123456789",
+      "id": 3
+    }
+  ],
+  "properties": [
+    {
+      "Name": "dse",
+      "Email": "qw@gmail.com",
+      "Price": "12",
+      "Address": "qa",
+      "id": 1
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "QD",
+      "Address": "QASD",
+      "Price": "123",
       "id": 2
     },
     {
-      "username": "zx",
-      "email": "zx@gmail.com",
-      "password": "qwertyuiop",
-      "confirmPassword": "qwertyuiop",
-      "contactNumber": "1234567890",
-      "properties": null,
+      "Email": "zx@gmail.com",
+      "Name": "qasxa adsjbj aNK",
+      "Address": "qa",
+      "Price": "1123",
       "id": 3
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "QASAadsn ",
+      "Address": "j. sjja",
+      "Price": "1",
+      "id": 4
     }
   ]
 }

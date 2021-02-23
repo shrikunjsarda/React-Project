@@ -13,7 +13,7 @@ import Div from '../Components/DivFlex/Div';
 // import { AccountCircle } from '@material-ui/icons';
 import Span from '../Components/DivFlex/Span';
 import { useHistory, useLocation } from 'react-router';
-import {users} from '../db.json';
+import {users, properties} from '../db.json';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 
@@ -23,18 +23,8 @@ import axios from 'axios';
 
 
 
-
-
-const initialState = {
-    username: "",
-    email:"",
-    password: "",
-    confirmPassword:"",
-    contactNumber:""
-    // properties:[]
-}
-
 const initialPropertyState = {
+    Email: "",
     Name:"",
     Address:"",
     Price:""
@@ -47,22 +37,23 @@ const Dashboard: React.FC = () => {
     const userEmail = location.state;
 
 
-    const [user, setUser] = useState(initialState);
+    
     const [propertyState, setPropertyState] = useState(initialPropertyState);
+    const dbPropeties =  properties.filter ( d => d.Email ===userEmail );
 
-
-    const dbObject = users.filter(d => d.email === userEmail);
-
-    const idd = dbObject[0].id;
-
-    const index = users.findIndex(x => x.id== idd);
-    console.log(index);
-    // Add Button
-    const handleAdd = () =>{
-
+    // logout 
+    const handleLogout = () =>{
+        history.push('/');
     }
+    // useEffect(() => {
+    //     loadUser()
+    // }, [])
+    // const loadUser = async () => {
+    //     setPropertyState( prev =>({...prev, Email: userEmail}))
+    // }
 
-    // Logout Button
+
+    // pop up form
     const [open, setOpen] = useState(false);
 
     const onOpenModal = () => setOpen(true);
@@ -77,34 +68,22 @@ const Dashboard: React.FC = () => {
 
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
-        console.log(propertyState);
-        console.log("@@@@");
-        console.log(user);
-        await axios.post(`http://localhost:3334/users/${idd}/properties/`, propertyState);
-        history.push("/dashboard");
+        
+        setPropertyState( prev => ({...prev, Email: userEmail}))
+        console.log(userEmail)
+        propertyState.Email = userEmail;
+        setOpen(false);
+        await axios.post(`http://localhost:3334/properties`, propertyState);
+        history.push({
+            pathname: '/dashboard',
+            state: userEmail
+        });
     }
 
-
-    const handleLogout = () =>{
-        history.push('/');
-    }
-    useEffect(() => {
-        loadUser()
-    }, [])
-
-    const loadUser = async () => {
-        if(dbObject.length>0)
-        setUser(dbObject[0]);
-    }
-    // User Profile Button
     const handleUserProfile = () =>{
-        console.log(dbObject[0]);
-        setUser(dbObject[0]);
-        // console.log("hii")
-        // console.log(user);
         history.push({
             pathname: '/profile',
-            state: user.email
+            state: userEmail
         });
     }
 
@@ -162,7 +141,7 @@ const Dashboard: React.FC = () => {
                 </Modal>
             </DivflexSubHeading>
             
-            <Table list={users[index].properties} />
+            <Table list={dbPropeties} />
 
         </>  
              

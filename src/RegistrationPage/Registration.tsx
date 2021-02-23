@@ -25,8 +25,7 @@ const initialState = {
     email:"",
     password: "",
     confirmPassword:"",
-    contactNumber:"",
-    properties : []
+    contactNumber:""
 }
 function Register() {
 
