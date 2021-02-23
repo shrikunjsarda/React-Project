@@ -65,7 +65,9 @@ function EditProfile() {
             else
             {
                 await axios.put(`http://localhost:3334/users/${idd}`, state);
-                history.push('/');
+                history.push({pathname :'/dashboard',
+                    state: userEmail
+                });
                 // write update logic here
             }
             

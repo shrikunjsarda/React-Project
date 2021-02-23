@@ -6,41 +6,143 @@
       "email": "as@gmail.com",
       "password": "asdfghjkl",
       "confirmPassword": "asdfghjkl",
-      "contactNumber": "1234567123",
-      "properties": [
-        {
-          "Name": "chintan",
-          "Address": "sdfghjhgfdsdfghjhdsdfgnmfdsdfghnhgfdsdfghgfdsdfghgfdsdfghgfdsdfghgfdsdfbngfdsdfghgfdsdfghgfsadfghngfsdfgnfd",
-          "Price": 2
-        },
-        {
-          "Name": "sadfghfdsadfghchintan",
-          "Address": "hello",
-          "Price": 2
-        },
-        {
-          "Name": "csdfghjgfdhintan",
-          "Address": "hello",
-          "Price": 2
-        }
-      ]
+      "contactNumber": "1234567123"
     },
     {
-      "username": "qw",
+      "username": "qqq",
       "email": "qw@gmail.com",
       "password": "qwertyuiop",
       "confirmPassword": "qwertyuiop",
-      "contactNumber": "0987654321",
+      "contactNumber": "1114567890",
       "id": 2
     },
     {
-      "username": "zx",
+      "username": "vvvv",
       "email": "zx@gmail.com",
-      "password": "qwertyuiop",
-      "confirmPassword": "qwertyuiop",
-      "contactNumber": "1234567890",
-      "properties": null,
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "contactNumber": "1234567891",
       "id": 3
+    }
+  ],
+  "properties": [
+    {
+      "Email": "as@gmail.com",
+      "Name": "sdkkjs",
+      "Address": "123",
+      "Price": "123",
+      "id": 1
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "sdjdhjwqlk",
+      "Address": "dcjsjfdvkqw",
+      "Price": "123",
+      "id": 2
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "dfjkjv akl",
+      "Address": "ljdzfvj ksj",
+      "Price": "12",
+      "id": 3
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "wfdkj as",
+      "Address": "askjvjqwcke",
+      "Price": "12",
+      "id": 4
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "dfjfj",
+      "Address": "asja",
+      "Price": "1",
+      "id": 5
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "dsja",
+      "Address": "shhsj",
+      "Price": "12",
+      "id": 6
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "aq",
+      "Address": "q",
+      "Price": "1",
+      "id": 7
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "q",
+      "Address": "1",
+      "Price": "1",
+      "id": 9
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "q",
+      "Address": "1",
+      "Price": "1",
+      "id": 10
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "aa",
+      "Address": "aa",
+      "Price": "1",
+      "id": 11
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "qa1qwa",
+      "Address": "1",
+      "Price": "1",
+      "id": 12
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "qwa",
+      "Address": "qa",
+      "Price": "1",
+      "id": 13
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "qa",
+      "Address": "qa",
+      "Price": "1",
+      "id": 14
+    },
+    {
+      "Email": "as@gmail.com",
+      "Name": "qa1QA",
+      "Address": "QA",
+      "Price": "1",
+      "id": 15
+    },
+    {
+      "Email": "qw@gmail.com",
+      "Name": "QA",
+      "Address": "QA",
+      "Price": "1",
+      "id": 16
+    },
+    {
+      "Name": "as",
+      "Address": "qa",
+      "Price": "1",
+      "id": 18
+    },
+    {
+      "Email": "qw@gmail.com",
+      "Name": "qaqa",
+      "Address": "qaqa",
+      "Price": "12",
+      "id": 19
     }
   ]
 }

@@ -22,7 +22,8 @@ import { rgbToHex } from '@material-ui/core';
  type listType ={
      Name: string,
      Address: string,
-     Price: number
+     Price: string,
+     id: number
  }
  type proptype ={
      list?: listType[] | null
@@ -34,10 +35,12 @@ const Table:React.FC<proptype> = (props) =>{
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
+    //
     const handleDelete = () =>{
         
     }
 
+    // edit button 
     const handleSave = () =>{
 
     }
