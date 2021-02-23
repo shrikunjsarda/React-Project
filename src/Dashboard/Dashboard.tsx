@@ -45,6 +45,12 @@ const Dashboard: React.FC = () => {
     const handleLogout = () =>{
         history.push('/');
     }
+    // useEffect(() => {
+    //     loadUser()
+    // }, [])
+    // const loadUser = async () => {
+    //     setPropertyState( prev =>({...prev, Email: userEmail}))
+    // }
 
 
     // pop up form
@@ -62,6 +68,9 @@ const Dashboard: React.FC = () => {
 
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+        
+        setPropertyState( prev => ({...prev, Email: userEmail}))
+        console.log(userEmail)
         propertyState.Email = userEmail;
         setOpen(false);
         await axios.post(`http://localhost:3334/properties`, propertyState);
