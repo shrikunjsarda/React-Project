@@ -68,7 +68,7 @@ const Dashboard: React.FC = () => {
     const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
 
-    const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const handleInput =  (e: React.FormEvent<HTMLInputElement>) => {
         const inputUsername = e.currentTarget.name;
         const value = e.currentTarget.value;
             

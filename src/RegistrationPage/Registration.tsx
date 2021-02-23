@@ -13,10 +13,22 @@ import LoginFormLink from '../Components/LoginLink/LoginLink';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
 import {users} from '../db.json';
 
-type propertyType = {
-    Name:string,
-    Address:string,
-    Price:number
+type listType ={
+    Name: string,
+    Address: string,
+    Price: number
+}
+type proptype ={
+    list?: listType[] | null
+}
+
+interface state {
+    username: string,
+    email: string,
+    password: string,
+    confirmPassword: string,
+    contactNumber: number,
+    properties : listType
 }
 
 
