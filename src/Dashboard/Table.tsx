@@ -62,9 +62,12 @@ const Table:React.FC<proptype> = (props) =>{
         setState(prev=>({...prev, [inputUsername] : value}));
     };
 
-    //
-    const handleDelete = () =>{
-        
+    // delete button
+    const handleDelete = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+        const idd = Number(e.currentTarget.name);
+        const dbPropeties = properties.filter( d => d.id == idd);
+        const idx = dbPropeties[0].id;
+        await axios.delete(`http://localhost:3334/properties/${idx}`);
     }
 
     // edit button 
@@ -75,17 +78,12 @@ const Table:React.FC<proptype> = (props) =>{
         }
         else {
             setOpen(false);
-            setError1('')
+            setError1('');
             await axios.put(`http://localhost:3334/properties/${state.id}`, state);
                 history.push({pathname :'/dashboard',
                     state: state.Email
                 });
         }
-        
-        // setOpen(false);
-        
-        
-
     }
 
     
@@ -164,7 +162,7 @@ const Table:React.FC<proptype> = (props) =>{
                                             
                                         
                                         </Modal>
-                                        <DeleteButton onClick = {handleDelete}>Delete</DeleteButton>
+                                        <DeleteButton onClick = {handleDelete} name={String(Property.id)}>Delete</DeleteButton>
                                     </DivflexButton>
                                         
                                         

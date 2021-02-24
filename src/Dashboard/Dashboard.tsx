@@ -20,6 +20,7 @@ import 'react-responsive-modal/styles.css';
 import HeadingStyle from '../Components/Heading/HeadingStyle';
 import InputArea from '../Components/InputArea/InputArea';
 import axios from 'axios';
+import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
 
 
 
@@ -40,7 +41,7 @@ const Dashboard: React.FC = () => {
     
     const [propertyState, setPropertyState] = useState(initialPropertyState);
     const dbPropeties =  properties.filter ( d => d.Email ===userEmail );
-
+    const [error1, setError1] = useState("");
     // logout 
     const handleLogout = () =>{
         history.push('/');
@@ -69,15 +70,23 @@ const Dashboard: React.FC = () => {
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
         
-        setPropertyState( prev => ({...prev, Email: userEmail}))
-        console.log(userEmail)
-        propertyState.Email = userEmail;
-        setOpen(false);
-        await axios.post(`http://localhost:3334/properties`, propertyState);
-        history.push({
-            pathname: '/dashboard',
-            state: userEmail
-        });
+        if (propertyState.Name === "" || propertyState.Address === "" || propertyState.Price === "") {
+            setOpen(true);
+            setError1('All fields are required');
+        }
+        else
+        {
+        // setPropertyState( prev => ({...prev, Email: userEmail}))
+            console.log(userEmail)
+            propertyState.Email = userEmail;
+            setOpen(false);
+            setError1("");
+            await axios.post(`http://localhost:3334/properties`, propertyState);
+            history.push({
+                pathname: '/dashboard',
+                state: userEmail
+            });
+        }
     }
 
     const handleUserProfile = () =>{
@@ -114,6 +123,7 @@ const Dashboard: React.FC = () => {
                         type="text"
                         name="Name"
                         autoComplete="off"
+                        
                         required
                         onChange={handleInput}
                     />
@@ -136,6 +146,11 @@ const Dashboard: React.FC = () => {
                     />
                     
                     <RegisterButtonStyle type="submit" onClick={handleSubmit}> Submit </RegisterButtonStyle>
+                    {error1 && (
+                        <ErrorStyle>
+                        <p>**{error1}</p>
+                        </ErrorStyle>
+                    )}
                     </div>
                 
                 </Modal>
