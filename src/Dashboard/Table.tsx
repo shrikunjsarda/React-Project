@@ -48,7 +48,7 @@ const Table:React.FC<proptype> = (props) =>{
     const onOpenModal = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const idd = Number(e.currentTarget.name);
         const dbPropeties = properties.filter( d => d.id == idd);
-        console.log(dbPropeties);
+        // console.log(dbPropeties);
         setState(dbPropeties[0])
         setOpen(true);
     }

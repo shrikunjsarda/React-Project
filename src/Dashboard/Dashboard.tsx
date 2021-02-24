@@ -76,7 +76,7 @@ const Dashboard: React.FC = () => {
         else
         {
         // setPropertyState( prev => ({...prev, Email: userEmail}))
-            console.log(userEmail)
+            // console.log(userEmail)
             propertyState.Email = userEmail;
             setOpen(false);
             setError1("");

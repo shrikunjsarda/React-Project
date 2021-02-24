@@ -42,8 +42,8 @@ const initialState = {
 function Register() {
 
         let history = useHistory();
-        const bcrypt = require('bcryptjs');
-        var salt = bcrypt.genSaltSync(10);
+        // const bcrypt = require('bcryptjs');
+        // var salt = bcrypt.genSaltSync(10);
         const [state, setState] = useState(initialState);
         const minLength = 8;
         const handleInput = (e: React.FormEvent<HTMLInputElement>) =>{

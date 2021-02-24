@@ -36,7 +36,7 @@ function ChangePassword() {
         const [state, setState] = useState(initialState);
         const [error1, setError1] = useState("");
         const [error2, setError2] = useState("");
-        const bcrypt = require('bcryptjs');
+        // const bcrypt = require('bcryptjs');
         const location = useLocation();
         const history = useHistory();
         const userEmail = location.state;
