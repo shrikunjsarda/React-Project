@@ -6,41 +6,124 @@
       "email": "as@gmail.com",
       "password": "asdfghjkl",
       "confirmPassword": "asdfghjkl",
-      "contactNumber": "1234567123",
-      "properties": [
-        {
-          "Name": "chintan",
-          "Address": "sdfghjhgfdsdfghjhdsdfgnmfdsdfghnhgfdsdfghgfdsdfghgfdsdfghgfdsdfghgfdsdfbngfdsdfghgfdsdfghgfsadfghngfsdfgnfd",
-          "Price": 2
-        },
-        {
-          "Name": "sadfghfdsadfghchintan",
-          "Address": "hello",
-          "Price": 2
-        },
-        {
-          "Name": "csdfghjgfdhintan",
-          "Address": "hello",
-          "Price": 2
-        }
-      ]
+      "contactNumber": "1234511111"
     },
     {
-      "username": "qw",
+      "username": "vvvv",
+      "email": "zx@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "contactNumber": "0123456789",
+      "id": 3
+    },
+    {
+      "username": "ddyg",
       "email": "qw@gmail.com",
       "password": "qwertyuiop",
       "confirmPassword": "qwertyuiop",
-      "contactNumber": "0987654321",
+      "contactNumber": "1234567890",
+      "id": 4
+    },
+    {
+      "username": "suhs",
+      "email": "asx@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "contactNumber": "1234567890",
+      "id": 5
+    }
+  ],
+  "properties": [
+    {
+      "Name": "dse",
+      "Email": "qw@gmail.com",
+      "Price": "12",
+      "Address": "qa",
+      "id": 1
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "ssdfsddfdsd",
+      "Address": "QASD",
+      "Price": "123",
       "id": 2
     },
     {
-      "username": "zx",
-      "email": "zx@gmail.com",
-      "password": "qwertyuiop",
-      "confirmPassword": "qwertyuiop",
-      "contactNumber": "1234567890",
-      "properties": null,
-      "id": 3
+      "Email": "as@gmail.com",
+      "Name": "dbhbhbd",
+      "Address": "",
+      "Price": "32",
+      "id": 5
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "wsdidhhd",
+      "Address": "dsds",
+      "Price": "233",
+      "id": 6
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "sdjns",
+      "Address": "dsdd",
+      "Price": "12",
+      "id": 7
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "dsdnn",
+      "Address": "wdsc",
+      "Price": "32",
+      "id": 8
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "ndn",
+      "Address": "ndnds",
+      "Price": "12",
+      "id": 9
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "hsudhh",
+      "Address": "sdihd",
+      "Price": "211",
+      "id": 10
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "ubdub",
+      "Address": "isnnd",
+      "Price": "123",
+      "id": 11
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "ubduh",
+      "Address": "hhs",
+      "Price": "1",
+      "id": 12
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "uddb",
+      "Address": "sdff",
+      "Price": "3",
+      "id": 13
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "ass",
+      "Address": "sds",
+      "Price": "34",
+      "id": 14
+    },
+    {
+      "Email": "zx@gmail.com",
+      "Name": "sdds",
+      "Address": "dsd",
+      "Price": "12",
+      "id": 15
     }
   ]
 }

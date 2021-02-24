@@ -79,7 +79,9 @@ function ChangePassword() {
                 state.confirmPassword = currState.confirmnewpassword;
                 
                 await axios.put(`http://localhost:3334/users/${id}`, state);
-                history.push('/');
+                history.push({pathname :'/dashboard',
+                    state: userEmail
+                });
             }
 
         }

@@ -15,30 +15,65 @@ import InputArea from '../Components/InputArea/InputArea';
 import Heading from '../Components/Heading/heading_Components';
 import RegisterButtonStyle from '../Components/ButtonRegister/RegisterButtonStyle';
 import { rgbToHex } from '@material-ui/core';
+import {properties} from '../db.json';
+import axios from 'axios';
+import { useHistory, useLocation } from 'react-router';
 
-
-
+ const initialPropertyStateState = {
+     Name: "",
+     Email: "",
+     Address: "",
+     Price: "",
+     id: 0
+ }
 
  type listType ={
      Name: string,
      Address: string,
-     Price: number
+     Price: string,
+     id: number
  }
  type proptype ={
      list?: listType[] | null
  }
 const Table:React.FC<proptype> = (props) =>{
 
+    const history = useHistory();
     const [open, setOpen] = useState(false);
+    const [state, setState] = useState(initialPropertyStateState);
 
-    const onOpenModal = () => setOpen(true);
+
+
+    const onOpenModal = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const idd = Number(e.currentTarget.name);
+        const dbPropeties = properties.filter( d => d.id == idd);
+        console.log(dbPropeties);
+        setState(dbPropeties[0])
+        setOpen(true);
+    }
+    
     const onCloseModal = () => setOpen(false);
 
+    const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+        const inputUsername = e.currentTarget.name;
+        const value = e.currentTarget.value;
+            
+        setState(prev=>({...prev, [inputUsername] : value}));
+    };
+
+    //
     const handleDelete = () =>{
         
     }
 
-    const handleSave = () =>{
+    // edit button 
+    const handleSave = async() =>{
+
+        setOpen(false);
+        await axios.put(`http://localhost:3334/properties/${state.id}`, state);
+                history.push({pathname :'/dashboard',
+                    state: state.Email
+                });
 
     }
 
@@ -66,7 +101,7 @@ const Table:React.FC<proptype> = (props) =>{
                                 <Td colSpan={1}>{Property.Price}</Td>
                                 <Td colSpan={1}>
                                     <DivflexButton>
-                                        <Button onClick= {onOpenModal}>Edit</Button>
+                                        <Button onClick= {onOpenModal} name={String(Property.id)}>Edit</Button>
                                         <Modal styles={{ overlay: { background: "#02020225" } }} open={open} onClose={onCloseModal} center>
                 
                                             <div style={{width: "500px"}}>
@@ -76,23 +111,29 @@ const Table:React.FC<proptype> = (props) =>{
                                             <label>Name:</label>
                                             <InputArea
                                                 type="text"
-                                                name="propertyname"
+                                                name="Name"
                                                 autoComplete="off"
+                                                value ={state.Name}
+                                                onChange={handleInput}
                                                 required
                                             />
                                             
                                             <label>Address:</label>
                                             <InputArea
                                                 type="text"
-                                                name="propertyaddress"
+                                                name="Address"
                                                 autoComplete="off"
+                                                value ={state.Address}
+                                                onChange={handleInput}
                                                 required
                                             />
                                             <label>Price:</label>
                                             <InputArea
                                                 type="number"
-                                                name="propertyprice"
+                                                name="Price"
                                                 autoComplete="off"
+                                                value ={state.Price}
+                                                onChange={handleInput}
                                                 required
                                             />
                                             
