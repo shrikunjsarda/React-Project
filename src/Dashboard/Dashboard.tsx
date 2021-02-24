@@ -37,7 +37,6 @@ const Dashboard: React.FC = () => {
     const location = useLocation();
     const userEmail = location.state;
 
-
     
     const [propertyState, setPropertyState] = useState(initialPropertyState);
     const dbPropeties =  properties.filter ( d => d.Email ===userEmail );

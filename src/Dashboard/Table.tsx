@@ -18,6 +18,7 @@ import {properties} from '../db.json';
 import axios from 'axios';
 import { useHistory, useLocation } from 'react-router';
 import ErrorStyle from '../Components/ErrorStyle/ErrorStyle';
+import { grey } from '@material-ui/core/colors';
  
 const initialPropertyStateState = {
      Name: "",
@@ -100,77 +101,83 @@ const Table:React.FC<proptype> = (props) =>{
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {
-                        props.list && props.list.map( Property =>(
-                            
-                            <Tr>
+                    {props.list?.length !== 0 ? (
+                        
+                            props.list && props.list.map( Property =>(
                                 
-                                <Td colSpan= {2}>{Property.Name}</Td>
-                                <Td colSpan={4}>{Property.Address}</Td>
-                                <Td colSpan={1}>{Property.Price}</Td>
-                                <Td colSpan={1}>
-                                    <DivflexButton>
-                                        <Button onClick= {onOpenModal} name={String(Property.id)}>Edit</Button>
-                                        <Modal styles={{ overlay: { background: "#02020225" } }} open={open} onClose={onCloseModal} center>
-
-                                            <div style={{width: "500px"}}>
-                                            
-                                            <HeadingStyle>
-                                                <Heading name="Edit Property" />
-                                            </HeadingStyle>
-                                            <label>Name:</label>
-                                            <InputArea
-                                                type="text"
-                                                name="Name"
-                                                autoComplete="off"
-                                                value ={state.Name}
-                                                onChange={handleInput}
-                                                required
-                                            />
-                                            
-                                            
-                                            <label>Address:</label>
-                                            <InputArea
-                                                type="text"
-                                                name="Address"
-                                                autoComplete="off"
-                                                value ={state.Address}
-                                                onChange={handleInput}
-                                                required
-                                            />
-                                            
-
-                                            <label>Price:</label>
-                                            <InputArea
-                                                type="number"
-                                                name="Price"
-                                                autoComplete="off"
-                                                value ={state.Price}
-                                                onChange={handleInput}
-                                                required
-                                            />
-                                            
-                                            
-                                            <RegisterButtonStyle type="submit" onClick={handleSave}> Save </RegisterButtonStyle>
-                                            {error1 && (
-                                                <ErrorStyle>
-                                                <p>**{error1}</p>
-                                                </ErrorStyle>
-                                            )}
-                                            
-                                            </div>
-                                            
-                                        
-                                        </Modal>
-                                        <DeleteButton onClick = {handleDelete} name={String(Property.id)}>Delete</DeleteButton>
-                                    </DivflexButton>
-                                        
-                                        
+                                <Tr>
                                     
-                                </Td>
-                            </Tr>
-                        ))
-                    }
+                                    <Td colSpan= {2}>{Property.Name}</Td>
+                                    <Td colSpan={4}>{Property.Address}</Td>
+                                    <Td colSpan={1}>{Property.Price}</Td>
+                                    <Td colSpan={1}>
+                                        <DivflexButton>
+                                            <Button onClick= {onOpenModal} name={String(Property.id)}>Edit</Button>
+                                            <Modal styles={{ overlay: { background: "#02020225" } }} open={open} onClose={onCloseModal} center>
+    
+                                                <div style={{width: "500px"}}>
+                                                
+                                                <HeadingStyle>
+                                                    <Heading name="Edit Property" />
+                                                </HeadingStyle>
+                                                <label>Name:</label>
+                                                <InputArea
+                                                    type="text"
+                                                    name="Name"
+                                                    autoComplete="off"
+                                                    value ={state.Name}
+                                                    onChange={handleInput}
+                                                    required
+                                                />
+                                                
+                                                
+                                                <label>Address:</label>
+                                                <InputArea
+                                                    type="text"
+                                                    name="Address"
+                                                    autoComplete="off"
+                                                    value ={state.Address}
+                                                    onChange={handleInput}
+                                                    required
+                                                />
+                                                
+    
+                                                <label>Price:</label>
+                                                <InputArea
+                                                    type="number"
+                                                    name="Price"
+                                                    autoComplete="off"
+                                                    value ={state.Price}
+                                                    onChange={handleInput}
+                                                    required
+                                                />
+                                                
+                                                
+                                                <RegisterButtonStyle type="submit" onClick={handleSave}> Save </RegisterButtonStyle>
+                                                {error1 && (
+                                                    <ErrorStyle>
+                                                    <p>**{error1}</p>
+                                                    </ErrorStyle>
+                                                )}
+                                                
+                                                </div>
+                                                
+                                            
+                                            </Modal>
+                                            <DeleteButton onClick = {handleDelete} name={String(Property.id)}>Delete</DeleteButton>
+                                        </DivflexButton>
+                                            
+                                            
+                                        
+                                    </Td>
+                                </Tr>
+                            ))
+                        
+                    ) : (
+                        <Tr>
+                            <Td colSpan={8} style={{color: "grey"}}> No Properties</Td>
+                        </Tr>
+                    )}
                 </Tbody>    
             </TableStyle>     
         </>
